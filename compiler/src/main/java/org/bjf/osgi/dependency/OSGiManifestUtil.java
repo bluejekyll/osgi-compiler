@@ -27,7 +27,6 @@ import java.util.jar.Manifest;
  * OSGiManifestUtil
  *
  * @author bfry
- * @since RaidenNet 0.1
  */
 public class OSGiManifestUtil {
     private static final Attributes.Name IMPORT_PACKAGE = new Attributes.Name("Import-Package");

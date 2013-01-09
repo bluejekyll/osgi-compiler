@@ -24,7 +24,6 @@ import java.util.jar.Manifest;
  * OSGiManifestUtilTest
  *
  * @author bfry
- * @since RaidenNet 0.1
  */
 public class OSGiManifestUtilTest {
     @Test

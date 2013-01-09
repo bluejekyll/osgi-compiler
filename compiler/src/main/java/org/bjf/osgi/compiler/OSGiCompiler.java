@@ -28,7 +28,6 @@ import org.bjf.osgi.dependency.OSGiManifestUtil;
  * OSGiCompiler
  *
  * @author bfry
- * @since RaidenNet 0.1
  */
 public class OSGiCompiler {
     private final Logger logger = Logger.getLogger(OSGiCompiler.class);

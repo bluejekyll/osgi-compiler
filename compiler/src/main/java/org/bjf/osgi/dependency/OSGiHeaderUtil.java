@@ -19,7 +19,6 @@ import java.util.Set;
  * OSGiHeaderUtil
  *
  * @author bfry
- * @since RaidenNet 0.1
  */
 public class OSGiHeaderUtil {
     private final String header;

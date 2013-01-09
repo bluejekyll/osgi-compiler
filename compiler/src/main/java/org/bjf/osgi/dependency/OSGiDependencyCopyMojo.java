@@ -33,7 +33,6 @@ import java.util.Set;
  * @requiresDependencyCollection runtime
  * 
  * @author bfry
- * @since RaidenNet 0.1
  */
 @SuppressWarnings("JavaDoc")
 public class OSGiDependencyCopyMojo extends AbstractOSGiDependencyMojo {

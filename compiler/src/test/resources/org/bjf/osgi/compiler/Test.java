@@ -20,7 +20,6 @@ import org.bjf.osgi.testimprt.TestImport;
  * Test
  *
  * @author bfry
- * @since RaidenNet 0.1
  */
 public class Test {
     public static String test() {

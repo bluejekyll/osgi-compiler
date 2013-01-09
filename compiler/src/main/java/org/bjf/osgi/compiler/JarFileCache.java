@@ -21,7 +21,6 @@ import java.util.jar.JarFile;
  * JarFileCache
  *
  * @author bfry
- * @since RaidenNet 0.1
  */
 public class JarFileCache extends LinkedHashMap<JarFile, Set<String>> {
     private static final int maxSize = 10;

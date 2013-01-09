@@ -24,7 +24,6 @@ import java.util.Set;
  * OSGiHeaderUtilTest
  *
  * @author bfry
- * @since RaidenNet 0.1
  */
 public class OSGiHeaderUtilTest {
     @DataProvider

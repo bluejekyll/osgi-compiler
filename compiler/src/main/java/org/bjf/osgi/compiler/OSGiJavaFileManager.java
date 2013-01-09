@@ -28,7 +28,6 @@ import org.apache.log4j.Logger;
  * OSGiJavaFileManager
  *
  * @author bfry
- * @since RaidenNet 0.1
  */
 public class OSGiJavaFileManager implements StandardJavaFileManager {
     private static final Logger logger = Logger.getLogger(OSGiJavaFileManager.class);

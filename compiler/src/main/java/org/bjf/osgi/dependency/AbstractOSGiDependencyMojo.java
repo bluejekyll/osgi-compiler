@@ -27,7 +27,6 @@ import java.util.jar.Manifest;
  * AbstractOSGiDependencyMojo
  *
  * @author bfry
- * @since RaidenNet 0.1
  */
 @SuppressWarnings({"UnusedDeclaration", "JavaDoc"})
 public abstract class AbstractOSGiDependencyMojo extends AbstractMojo {

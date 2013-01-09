@@ -23,7 +23,6 @@ import org.testng.annotations.Test;
  * OSGiCompilerTest
  *
  * @author bfry
- * @since RaidenNet 0.1
  */
 public class OSGiCompilerTest {
 

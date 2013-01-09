@@ -16,7 +16,6 @@ package org.bjf.osgi.testimprt;
  * TestImport
  *
  * @author bfry
- * @since RaidenNet 0.1
  */
 public class TestImport {
     public static final String IMPORT_TEST = "import_me";

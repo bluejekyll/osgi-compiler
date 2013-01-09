@@ -23,7 +23,6 @@ import org.apache.log4j.Logger;
  * OSGiClassLoader
  *
  * @author bfry
- * @since RaidenNet 0.1
  */
 public class OSGiClassLoader extends ClassLoader {
     private final Logger logger = Logger.getLogger(OSGiClassLoader.class);
