@@ -1,0 +1,21 @@
+Manifest-Version: 1.0
+Bnd-LastModified: 1337101576973
+Build-Jdk: 1.6.0_21
+Built-By: bfry
+Bundle-ManifestVersion: 2
+Bundle-Name: RaidenNet OSGI Test
+Bundle-SymbolicName: com.force.raidennet.osgi.test
+Bundle-Version: 1.0.0.SNAPSHOT
+Created-By: Apache Maven Bundle Plugin
+Export-Package: com.force.raidennet.osgi.test;uses:="com.force.raidennet
+ .kernel,org.apache.log4j,org.osgi.framework,org.testng";version="1.0.0.
+ SNAPSHOT",com.force.raidennet.osgi.test.testng;uses:="org.apache.log4j,
+ org.testng.annotations,org.osgi.framework.launch,org.osgi.framework,org
+ .testng,com.force.raidennet.kernel.init";version="1.0.0.SNAPSHOT"
+Import-Package: com.force.raidennet.kernel;version="[1.0,2)",com.force.r
+ aidennet.kernel.init;version="[1.0,2)",org.apache.log4j;version="[1.2,2
+ )",org.osgi.framework;version="[1.6,2)",org.osgi.framework.launch;versi
+ on="[1.0,2)",org.testng;version="[6.3,7)",org.testng.annotations;versio
+ n="[6.3,7)"
+Originally-Created-By: Apache Maven Bundle Plugin
+Tool: Bnd-1.50.0

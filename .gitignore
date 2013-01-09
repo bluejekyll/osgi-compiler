@@ -1,0 +1,29 @@
+# IntelliJ files
+.idea/
+*.ipr
+*.iws
+
+# Eclipse files
+.classpath
+.project
+.settings/
+
+# Vim files
+*.swp
+tags
+
+*~
+*.class
+*.db
+*.dev
+*.iml
+*.keystore
+target/
+classes/
+test-output/
+data/
+eclipse_config/
+bin/
+*autogen*
+static/jetty-conf/bin
+hs_err*.log

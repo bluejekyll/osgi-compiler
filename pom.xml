@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) 2012, salesforce.com, inc.
+  ~ All rights reserved.
+  ~
+  ~ Redistribution and use in source and binary forms, with or without modification, are permitted provided
+  ~ that the following conditions are met:
+  ~
+  ~    Redistributions of source code must retain the above copyright notice, this list of conditions and the
+  ~    following disclaimer.
+  ~
+  ~    Redistributions in binary form must reproduce the above copyright notice, this list of conditions and
+  ~    the following disclaimer in the documentation and/or other materials provided with the distribution.
+  ~
+  ~    Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or
+  ~    promote products derived from this software without specific prior written permission.
+  ~
+  ~ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED
+  ~ WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
+  ~ PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR
+  ~ ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED
+  ~ TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;OR BUSINESS INTERRUPTION)
+  ~ HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+  ~ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+  ~ POSSIBILITY OF SUCH DAMAGE.
+  -->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+<modelVersion>4.0.0</modelVersion>
+    <groupId>com.force.osgi</groupId>
+    <artifactId>parent</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <name>Maven OSGi Compiler Parent</name>
+    <packaging>pom</packaging>
+
+    <properties>
+        <java.version>1.6</java.version>
+        <test.jvm.args>-Xms256m -Xmx256m -XX:MaxPermSize=128M</test.jvm.args>
+    </properties>
+
+    <modules>
+        <module>test-bundle</module>
+        <module>compiler</module>
+        <module>integration-test</module>
+    </modules>
+    
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.testng</groupId>
+                <artifactId>testng</artifactId>
+                <version>6.3.1</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.maven</groupId>
+                <artifactId>maven-plugin-api</artifactId>
+                <version>3.0.4</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.maven</groupId>
+                <artifactId>maven-project</artifactId>
+                <version>3.0-alpha-2</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+    
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>2.4</version>
+
+                <executions>
+                    <execution>
+                        <id>purge-local-repo</id>
+                        <phase>clean</phase>
+                        <inherited>false</inherited>
+                        <goals>
+                            <goal>purge-local-repository</goal>
+                        </goals>
+                        <configuration>
+                            <actTransitively>false</actTransitively>
+                            <resolutionFuzziness>groupId</resolutionFuzziness>
+                            <snapshotsOnly>true</snapshotsOnly>
+                            <reResolve>false</reResolve>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+        
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>2.3.2</version>
+                    <configuration>
+                        <source>${java.version}</source>
+                        <target>${java.version}</target>
+                    </configuration>
+                </plugin>
+                
+                <!-- testing -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>2.12</version>
+                    <configuration>
+                        <!-- Should be the same as the failsafe plugin below -->
+                        <argLine>${test.jvm.args}</argLine>
+                        <redirectTestOutputToFile>true</redirectTestOutputToFile>
+                        
+                        <!-- Run unit test and ftest classes and methods in parallel -->
+                        <parallel>both</parallel>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <id>default-test</id>
+                            <phase>test</phase>
+                            <goals><goal>test</goal></goals>
+                            <configuration>
+                                <excludes>
+                                    <exclude>**/*FTest.java</exclude>
+                                    <exclude>**/*IntegrationTest.java</exclude>
+                                </excludes>
+                            </configuration>
+                        </execution>
+                        
+                        <!-- Functional tests are bound to the integration-test phase -->
+                        <execution>
+                            <id>functional-tests</id>
+                            <phase>integration-test</phase>
+                            <goals><goal>test</goal></goals>
+                            <configuration>
+                                <includes><include>**/*FTest.java</include></includes>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+</project>
