@@ -28,13 +28,21 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
 <modelVersion>4.0.0</modelVersion>
-    <groupId>com.force.osgi</groupId>
-    <artifactId>compiler.maven.plugin</artifactId>
+    <parent>
+        <groupId>net.bluejekyll.osgi</groupId>
+        <artifactId>compiler.parent</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <groupId>net.bluejekyll.osgi</groupId>
+    <artifactId>test.bundle</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>Maven OSGi Compiler</name>
-    <packaging>maven-plugin</packaging>
+    <packaging>jar</packaging>
 
     <properties>
+        <bundle.export.pre></bundle.export.pre>
+        <bundle.import.pre></bundle.import.pre>
+        <bundle.private.add></bundle.private.add>
     </properties>
 
     <dependencies>
@@ -46,6 +54,11 @@
     
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+
             <!-- this is the plugin for bundling OSGi modules, use packaging: bundle -->
             <plugin>
                 <groupId>org.apache.felix</groupId>
